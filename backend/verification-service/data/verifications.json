@@ -1,0 +1,16 @@
+{
+  "verifications": [
+    {
+      "credentialId": "f890b09ba65ece1afe93ff829f60ed5145d9407440796b802bd1a215495f670f",
+      "verifiedAt": "2025-10-07T09:19:26.480Z",
+      "verifiedBy": "worker-1",
+      "valid": true
+    },
+    {
+      "credentialId": "f890b09ba65ece1afe93ff829f60ed5145d9407440796b802bd1a215495f670f",
+      "verifiedAt": "2025-10-07T10:12:14.899Z",
+      "verifiedBy": "worker-1",
+      "valid": true
+    }
+  ]
+}

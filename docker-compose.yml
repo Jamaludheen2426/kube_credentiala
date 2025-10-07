@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  issuance:
+    build:
+      context: ./backend/issuance-service
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - DATA_FILE=/app/data/credentials.json
+      - WORKER_ID=
+    ports:
+      - "3001:3001"
+    volumes:
+      - issuance_data:/app/data
+
+  verification:
+    build:
+      context: ./backend/verification-service
+    environment:
+      - NODE_ENV=production
+      - PORT=3002
+      - DATA_FILE=/app/data/verifications.json
+      - ISSUANCE_BASE_URL=http://issuance:3001
+      - WORKER_ID=
+    depends_on:
+      - issuance
+    ports:
+      - "3002:3002"
+    volumes:
+      - verification_data:/app/data
+
+  web:
+    build:
+      context: ./frontend/web
+      args:
+        - VITE_ISSUANCE_API_URL=http://localhost:3001
+        - VITE_VERIFICATION_API_URL=http://localhost:3002
+    ports:
+      - "8080:80"
+    depends_on:
+      - issuance
+      - verification
+
+volumes:
+  issuance_data: {}
+  verification_data: {}
