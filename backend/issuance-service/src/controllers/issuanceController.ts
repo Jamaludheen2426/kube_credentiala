@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
-import { issueCredential, getIssuedById } from '../services/issuanceService';
-import logger from '../logger';
+import { issueCredential, getIssuedById } from '../services/issuanceService.js';
+import logger from '../logger/index.js';
 
 const credentialSchema = z.object({}).passthrough();
 

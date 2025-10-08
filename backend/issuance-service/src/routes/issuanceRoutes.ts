@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { postIssue, getInternalIssued } from '../controllers/issuanceController';
+import { postIssue, getInternalIssued } from '../controllers/issuanceController.js';
 
 const router = Router();
 

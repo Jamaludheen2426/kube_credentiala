@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
-import { verifyCredential } from '../services/verificationService';
+import { verifyCredential } from '../services/verificationService.js';
 
 const credentialSchema = z.object({}).passthrough();
 

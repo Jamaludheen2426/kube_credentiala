@@ -1,9 +1,9 @@
-import { issuanceRepo } from '../repositories/issuanceRepo';
-import { canonicalStringify } from '../utils/canonical';
-import { sha256Hex } from '../utils/hash';
-import { getWorkerId } from '../utils/worker';
-import { Credential, IssuedCredential } from '../models/types';
-import logger from '../logger';
+import { issuanceRepo } from '../repositories/issuanceRepo.js';
+import { canonicalStringify } from '../utils/canonical.js';
+import { sha256Hex } from '../utils/hash.js';
+import { getWorkerId } from '../utils/worker.js';
+import { Credential, IssuedCredential } from '../models/types.js';
+import logger from '../logger/index.js';
 
 export function computeCredentialId(credential: Credential): string {
   return sha256Hex(canonicalStringify(credential));

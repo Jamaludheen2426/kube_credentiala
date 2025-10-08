@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { DATA_FILE } from '../config/env';
-import { IssuedCredential } from '../models/types';
+import { DATA_FILE } from '../config/env.js';
+import { IssuedCredential } from '../models/types.js';
 
 function ensureDataFile(filePath: string): void {
   const dir = path.dirname(filePath);

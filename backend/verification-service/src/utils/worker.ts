@@ -1,5 +1,5 @@
 import os from 'os';
-import { WORKER_ID } from '../config/env';
+import { WORKER_ID } from '../config/env.js';
 
 export function getWorkerId(): string {
   if (WORKER_ID && WORKER_ID.trim() !== '') {

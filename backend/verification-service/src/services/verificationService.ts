@@ -1,10 +1,10 @@
-import { canonicalStringify } from '../utils/canonical';
-import { sha256Hex } from '../utils/hash';
-import { getWorkerId } from '../utils/worker';
-import { Credential } from '../models/types';
-import { verificationRepo } from '../repositories/verificationRepo';
-import { ISSUANCE_BASE_URL } from '../config/env';
-import logger from '../logger';
+import { canonicalStringify } from '../utils/canonical.js';
+import { sha256Hex } from '../utils/hash.js';
+import { getWorkerId } from '../utils/worker.js';
+import { Credential } from '../models/types.js';
+import { verificationRepo } from '../repositories/verificationRepo.js';
+import { ISSUANCE_BASE_URL } from '../config/env.js';
+import logger from '../logger/index.js';
 
 export async function verifyCredential(credential: Credential): Promise<{ status: number; body: any }> {
   if (!ISSUANCE_BASE_URL) {

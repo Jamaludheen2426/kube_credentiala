@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { postVerify } from '../controllers/verificationController';
+import { postVerify } from '../controllers/verificationController.js';
 
 const router = Router();
 

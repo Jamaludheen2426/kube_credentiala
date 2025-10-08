@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import verificationRoutes from './routes/verificationRoutes';
-import { requestLogger } from './middleware/requestLogger';
-import { notFound } from './middleware/notFound';
-import { errorHandler } from './middleware/errorHandler';
+import verificationRoutes from './routes/verificationRoutes.js';
+import { requestLogger } from './middleware/requestLogger.js';
+import { notFound } from './middleware/notFound.js';
+import { errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 app.use(cors());

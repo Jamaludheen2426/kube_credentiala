@@ -11,6 +11,48 @@
       "verifiedAt": "2025-10-07T10:12:14.899Z",
       "verifiedBy": "worker-1",
       "valid": true
+    },
+    {
+      "credentialId": "3945ceb5d9a570f6fdca3d7ae8ca65af6c922e6701050e957f0b4e6c0ef51a32",
+      "verifiedAt": "2025-10-08T02:25:59.595Z",
+      "verifiedBy": "worker-1",
+      "valid": true
+    },
+    {
+      "credentialId": "c53c192c0f295ccf76b7ba451f8d06875c370eb4db09559ef1a86c11321c6e21",
+      "verifiedAt": "2025-10-08T02:32:18.449Z",
+      "verifiedBy": "worker-1",
+      "valid": false
+    },
+    {
+      "credentialId": "3a6f0129464d9f85704e36851e264eb082b5e6ab3e9bdbd34724bf669667ca2e",
+      "verifiedAt": "2025-10-08T02:33:59.122Z",
+      "verifiedBy": "worker-1",
+      "valid": false
+    },
+    {
+      "credentialId": "f890b09ba65ece1afe93ff829f60ed5145d9407440796b802bd1a215495f670f",
+      "verifiedAt": "2025-10-08T02:40:08.518Z",
+      "verifiedBy": "worker-1",
+      "valid": true
+    },
+    {
+      "credentialId": "4d2bd6e274da8356dc0f1317ecf895d48b4f6cdd8c75594aa367a2237fa92c78",
+      "verifiedAt": "2025-10-08T02:40:29.881Z",
+      "verifiedBy": "worker-1",
+      "valid": false
+    },
+    {
+      "credentialId": "f890b09ba65ece1afe93ff829f60ed5145d9407440796b802bd1a215495f670f",
+      "verifiedAt": "2025-10-08T02:40:38.789Z",
+      "verifiedBy": "worker-1",
+      "valid": true
+    },
+    {
+      "credentialId": "3945ceb5d9a570f6fdca3d7ae8ca65af6c922e6701050e957f0b4e6c0ef51a32",
+      "verifiedAt": "2025-10-08T03:33:36.630Z",
+      "verifiedBy": "worker-1",
+      "valid": true
     }
   ]
 }
