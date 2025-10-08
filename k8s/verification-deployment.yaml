@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: verification-service
+  labels:
+    app: verification-service
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: verification-service
+  template:
+    metadata:
+      labels:
+        app: verification-service
+        tier: backend
+    spec:
+      containers:
+      - name: verification
+        image: your-registry/verification-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3002
+          name: http
+        env:
+        - name: PORT
+          value: "3002"
+        - name: WORKER_ID
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: DATA_FILE
+          value: "/data/verifications.json"
+        - name: ISSUANCE_BASE_URL
+          value: "http://issuance-service"
+        - name: LOG_LEVEL
+          value: "info"
+        - name: NODE_ENV
+          value: "production"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 3002
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 3002
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 3
+        volumeMounts:
+        - name: data-storage
+          mountPath: /data
+      volumes:
+      - name: data-storage
+        emptyDir: {}
