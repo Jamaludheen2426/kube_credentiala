@@ -25,9 +25,10 @@
 6. [Features](#features)
 7. [API Documentation](#api-documentation)
 8. [Deployment](#deployment)
-9. [Testing](#testing)
-10. [Assumptions](#assumptions)
-11. [Local Development](#local-development)
+9. [Docker Deployment](#docker-deployment)
+10. [Testing](#testing)
+11. [Assumptions](#assumptions)
+12. [Local Development](#local-development)
 
 ---
 
@@ -183,7 +184,7 @@ kube_credentiala/
 │       ├── package.json
 │       └── vite.config.ts
 │
-├── k8s/ (Kubernetes manifests)
+├── docker-compose.yml
 └── README.md
 ```
 
@@ -208,7 +209,7 @@ kube_credentiala/
 - **Cloud Platform:** Render (Free Tier)
 - **CI/CD:** GitHub + Render Auto-Deploy
 - **Containerization:** Docker
-- **Orchestration:** Kubernetes (manifests provided)
+- **Container Orchestration:** Docker Compose
 
 ---
 
@@ -416,20 +417,54 @@ npm run dev  # Port 5173
 
 ---
 
-## ☸️ Kubernetes Deployment
+## 🐳 Docker Deployment
 
-Kubernetes manifests are provided in the `k8s/` directory.
+### Using Docker Compose
 
-**Apply all:**
+The easiest way to run the entire stack locally is using Docker Compose:
+
 ```bash
-kubectl apply -f k8s/
+# Build and start all services
+docker-compose up --build
+
+# Or run in detached mode
+docker-compose up -d --build
+
+# View logs
+docker-compose logs -f
+
+# Stop all services
+docker-compose down
 ```
 
-**Scale services:**
+### Building Individual Docker Images
+
+**Issuance Service:**
 ```bash
-kubectl scale deployment issuance-service --replicas=5
-kubectl scale deployment verification-service --replicas=3
+cd backend/issuance-service
+docker build -t issuance-service:latest .
+docker run -p 3001:3001 \
+  -e WORKER_ID=worker-1 \
+  issuance-service:latest
 ```
+
+**Verification Service:**
+```bash
+cd backend/verification-service
+docker build -t verification-service:latest .
+docker run -p 3002:3002 \
+  -e WORKER_ID=verification-worker-1 \
+  -e ISSUANCE_BASE_URL=http://issuance-service:3001 \
+  verification-service:latest
+```
+
+### Docker Image Details
+
+- Base Image: `node:20-alpine` (lightweight)
+- Multi-stage builds for optimized size
+- Health checks configured
+- Volume mounts for data persistence
+- Environment variables for configuration
 
 ---
 
